@@ -46,7 +46,7 @@ function App() {
 
   const aoNovoColaboradorCadastrado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador])
-    console.log(colaboradores)
+    console.log(colaborador)
   }
 
   return (
@@ -58,6 +58,7 @@ function App() {
       />
       {times.map((time) => {
         return < Time
+          key={time.nome}
           nome={time.nome}
           corPrimaria={time.corPrimaria}
           corSecundaria={time.corSecundaria}
