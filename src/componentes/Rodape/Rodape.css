@@ -20,3 +20,15 @@
 .footer ul li:nth-child(3) {
     margin-right: 0;
 }
+
+@media(max-width: 720px) {
+    .footer{
+        flex-direction: column;
+    }
+    .footer img {
+        max-width: 120px;
+    }
+    .footer ul li img{
+        max-width: 25px;
+    }
+}
