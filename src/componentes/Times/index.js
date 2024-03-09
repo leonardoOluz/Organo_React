@@ -5,7 +5,7 @@ import './Time.css';
 const Time = (props) => {
     return (
         props.colaboradores.length > 0 && <section className="time" style={{ backgroundColor: hexToRgba(props.cor, '0.6') }}>
-            <input type='color' value={props.cor} onChange={e => {props.mudaCor(props.nome ,e.target.value)}} className='input-color'/>
+            <input type='color' value={props.cor} onChange={e => {props.mudaCor(props.id ,e.target.value)}} className='input-color'/>
             <h3 style={{ borderColor: props.cor }}>{props.nome}</h3>
             <div className='colaboradores'>
                 {props.colaboradores.map((colaborador, indice) => {
@@ -16,6 +16,7 @@ const Time = (props) => {
                         cargo={colaborador.cargo}
                         imagem={colaborador.imagem}
                         aoDeletar={props.aoDeletar}
+                        id={colaborador.id}
                     />
                 })}
             </div>
