@@ -7,9 +7,6 @@ import { v4 as uuidV4 } from 'uuid';
 
 function App() {
 
-  
-
-  
   const [times, setTimes] = useState([
     {
       id: uuidV4(),
@@ -230,7 +227,11 @@ function App() {
   }
 
   const aoNovoColaboradorCadastrado = (colaborador) => {
-    setColaboradores([...colaboradores, colaborador])
+    setColaboradores([...colaboradores, {...colaborador, id: uuidV4()}])
+  }
+
+  const cadastrarNovoTime = (timeNovo) => {
+    setTimes([...times, { ...timeNovo, id: uuidV4() }])
   }
 
   function deletarColaborador(id) {
@@ -242,6 +243,7 @@ function App() {
     <div className="App">
       <Banner />
       <Formulario
+        novoTime={cadastrarNovoTime}
         aoColaboradorcadastrado={colaborador => aoNovoColaboradorCadastrado(colaborador)}
         times={times.map(time => time.nome)}
       />
