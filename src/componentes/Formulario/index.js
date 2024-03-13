@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Botao from '../Botao';
-import CampoTexto from '../CampoTexto';
+import Campo from '../Campo';
 import ListaSuspensa from '../ListaSuspensa';
 import './Formulario.css';
 
@@ -31,31 +31,28 @@ const Formulario = (props) => {
         <section className="formulario">
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <CampoTexto
-                    obrigatorio={true}
+                <Campo
+                    obrigatorio
                     label="Nome"
-                    type="text"
                     placeholder="Digite seu nome"
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                 />
-                <CampoTexto
-                    obrigatorio={true}
+                <Campo
+                    obrigatorio
                     label="Cargo"
-                    type="text"
                     placeholder="Digite seu cargo"
                     valor={cargo}
                     aoAlterado={valor => setCargo(valor)}
                 />
-                <CampoTexto
+                <Campo
                     label="Imagem"
-                    type="text"
                     placeholder="Informe o endereço da imagem..."
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)}
                 />
                 <ListaSuspensa
-                    obrigatorio={true}
+                    obrigatorio
                     label="Time"
                     itens={props.times}
                     valor={time}
@@ -73,15 +70,14 @@ const Formulario = (props) => {
                     setCorTime('')
                 }}            >
                 <h2>Preencha os dados para criar um novo Time</h2>
-                <CampoTexto
+                <Campo
                     obrigatorio
-                    type="text"
                     label="Nome"
                     placeholder="Digite o nome do seu time"
                     valor={nomeTime}
                     aoAlterado={valor => setNomeTime(valor)}
                 />
-                <CampoTexto
+                <Campo
                     type="color"
                     obrigatorio
                     label="Cor"
