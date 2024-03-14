@@ -1,9 +1,11 @@
+import './App.css'
 import { useState } from 'react';
 import Formulario from './componentes/Formulario';
 import Banner from './componentes/banner';
 import Time from './componentes/Times';
 import Rodape from './componentes/Rodape';
 import { v4 as uuidV4 } from 'uuid';
+import { IoDocuments, IoDocumentsOutline } from "react-icons/io5";
 
 function App() {
 
@@ -44,6 +46,7 @@ function App() {
       cor: '#FF8A29',
     }
   ])
+  const [documents, setDocuments] = useState(false)
 
   const inicial = [
     {
@@ -236,7 +239,7 @@ function App() {
       nome: 'LEONARDO LUZ',
       cargo: 'Student of development web',
       imagem: 'https://github.com/leonardoOluz.png',
-      time: times[1].nome
+      time: times[6].nome
     },
   ]
   const [colaboradores, setColaboradores] = useState(inicial);
@@ -248,6 +251,16 @@ function App() {
       };
       return time;
     }))
+  }
+
+  const showDoc = () => {
+    setDocuments(!documents)
+  }
+
+  const propsShowDoc = {
+    className: 'show-doc',
+    size: 35,
+    onClick: showDoc
   }
 
   const resolverFavorito = (id) => {
@@ -271,13 +284,19 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className='app'>
       <Banner />
-      <Formulario
+      {documents ? <Formulario
         novoTime={cadastrarNovoTime}
         aoColaboradorcadastrado={colaborador => aoNovoColaboradorCadastrado(colaborador)}
         times={times.map(time => time.nome)}
-      />
+      /> : ''}
+
+      <div className='container-doc'>{
+        documents
+          ? <IoDocumentsOutline {...propsShowDoc} />
+          : <IoDocuments {...propsShowDoc} />}
+      </div>
       {times.map((time) => {
         return < Time
           key={time.nome}
