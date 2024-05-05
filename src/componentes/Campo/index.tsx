@@ -1,10 +1,19 @@
 import './Campo.css'
 
-export const Campo = ({ label, placeholder, aoAlterado, valor, type = 'text', obrigatorio = false, }) => {
+interface CampoProps {
+    aoAlterado: (valor: string) => void
+    label: string
+    obrigatorio: boolean
+    placeholder: string
+    type: string
+    valor: string
+}
+
+const Campo = ({ aoAlterado, label, obrigatorio, placeholder, type, valor }: CampoProps) => {
 
     const placeholderModificado = `${placeholder}...`
 
-    const aoDigitar = (e) => {
+    const aoDigitar = (e: React.ChangeEvent<HTMLInputElement>) => {
         aoAlterado(e.target.value);
     };
 
@@ -16,9 +25,11 @@ export const Campo = ({ label, placeholder, aoAlterado, valor, type = 'text', ob
                 value={valor}
                 type={type}
                 required={obrigatorio}
-                onChange={aoDigitar}
+                onChange={e => aoDigitar(e)}
                 placeholder={placeholderModificado}
             />
         </div>
     )
 };
+
+export default Campo;

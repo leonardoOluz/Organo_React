@@ -43,15 +43,14 @@ const Formulario = (props) => {
                     label="Cargo"
                     placeholder="Digite seu cargo"
                     valor={cargo}
-                    aoAlterado={valor => setCargo(valor)}
+                    aoAlterado={valor => setCargo(valor)}                    
                 />
                 <Campo
                     label="Imagem"
                     placeholder="Informe o endereço da imagem..."
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)}
-                />
-                <ListaSuspensa
+                    aoAlterado={valor => setImagem(valor)}                    
+                />                <ListaSuspensa
                     obrigatorio
                     label="Time"
                     itens={props.times}

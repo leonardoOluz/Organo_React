@@ -1,9 +1,22 @@
 .app .container-doc {
   position: relative;
-  height: 55px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.app .container-doc h3 {
+  font-size: 25px;
+  color: blue;
+  border-bottom: 1px solid blue;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .app .container-doc .show-doc{
+  border-radius: 55px;
+  padding: 10px;
+  background-color: rgb(20, 96, 211);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08);
   position: absolute;
   top: 10px;
   right: 25px;
