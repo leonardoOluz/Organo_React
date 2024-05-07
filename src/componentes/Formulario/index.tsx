@@ -20,6 +20,7 @@ const Formulario = (props: FormularioProps) => {
     const [time, setTime] = useState('');
     const [nomeTime, setNomeTime] = useState('');
     const [corTime, setCorTime] = useState('');
+    const [data, setData] = useState('');
 
     const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault();
@@ -27,13 +28,15 @@ const Formulario = (props: FormularioProps) => {
             nome,
             cargo,
             imagem,
-            time
+            time,
+            data
         });
 
         setNome('')
         setCargo('')
         setImagem('')
         setTime('')
+        setData('')
     };
     //FSX
     return (
@@ -60,6 +63,13 @@ const Formulario = (props: FormularioProps) => {
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)}
                 />
+                <Campo
+                    type='date'
+                    label="Data"
+                    placeholder=""
+                    valor={data}
+                    aoAlterado={valor => setData(valor)}
+                />
                 <ListaSuspensa
                     obrigatorio
                     label="Time"
@@ -67,6 +77,7 @@ const Formulario = (props: FormularioProps) => {
                     valor={time}
                     aoAlterado={valor => setTime(valor)}
                 />
+
                 <Botao>
                     Criar Card
                 </Botao>
