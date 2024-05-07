@@ -6,10 +6,12 @@ import Time from './componentes/Times';
 import Rodape from './componentes/Rodape';
 import { v4 as uuidV4 } from 'uuid';
 import { IoDocuments, IoDocumentsOutline } from "react-icons/io5";
+import { IColaborador } from './compartilhado/interface/IColaboradores';
+import { ITime } from './compartilhado/interface/ITime';
 
 function App() {
 
-  const [times, setTimes] = useState([
+  const [times, setTimes] = useState<ITime[]>([
     {
       id: uuidV4(),
       nome: 'Programação',
@@ -48,9 +50,10 @@ function App() {
   ])
   const [documents, setDocuments] = useState(false)
 
-  const [colaboradores, setColaboradores] = useState([]);
+  const [colaboradores, setColaboradores] = useState<IColaborador[]>([]);
 
-  useEffect(() => {  
+
+  useEffect(() => {
     fetch('https://my-json-server.typicode.com/leonardoOluz/Organo_Api/inicial')
       .then(resposta => resposta.json())
       .then(dados => {
@@ -58,7 +61,7 @@ function App() {
       })
   }, [])
 
-  function mudarCorDotime(id, cor) {
+  function mudarCorDotime(id: number | string | undefined, cor: string) {
     setTimes(times.map(time => {
       if (time.id === id) {
         time.cor = cor;
@@ -77,22 +80,25 @@ function App() {
     onClick: showDoc
   }
 
-  const resolverFavorito = (id) => {
+  const resolverFavorito = (id: number | string | undefined) => {
     setColaboradores(colaboradores.map((colaborador) => {
       if (colaborador.id === id) colaborador.favoritar = !colaborador.favoritar;
-      return colaborador
+      return colaborador;
     }))
   }
 
-  const aoNovoColaboradorCadastrado = (colaborador) => {
-    setColaboradores([...colaboradores, { ...colaborador, id: uuidV4() }])
+  const aoNovoColaboradorCadastrado = (colaborador: IColaborador) => {
+    setColaboradores([...colaboradores, { ...colaborador, id: uuidV4() }]);
   }
 
-  const cadastrarNovoTime = (timeNovo) => {
-    setTimes([...times, { ...timeNovo, id: uuidV4() }])
+  const cadastrarNovoTime = (timeNovo: ITime) => {
+    let newTime = times;
+    timeNovo.id = uuidV4();
+    newTime.push(timeNovo);
+    setTimes([...newTime]);
   }
 
-  function deletarColaborador(id) {
+  function deletarColaborador(id: number | string | undefined) {
     setColaboradores(colaboradores.filter(Colaborador => Colaborador.id !== id))
   }
 
@@ -106,7 +112,7 @@ function App() {
         novoTime={cadastrarNovoTime}
         aoColaboradorcadastrado={colaborador => aoNovoColaboradorCadastrado(colaborador)}
         times={times.map(time => time.nome)}
-      /> : ''}
+      /> : <></>}
 
       <div className='container-doc'>
         <h3>Minha Organização</h3>

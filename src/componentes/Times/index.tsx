@@ -4,11 +4,11 @@ import './Time.css';
 import { IColaborador } from '../../compartilhado/interface/IColaboradores';
 
 interface TimeProps {
-    id: number | string
+    id: string | undefined
     cor: string
     aoDeletar: (id: number | string | undefined) => void
     aoFavoritar: (id: number | string | undefined) => void
-    mudaCor: (id: number | string , cor: string) => void
+    mudaCor: (id: string | undefined , cor: string) => void
     nome: string
     colaboradores: IColaborador[]
 }
@@ -16,7 +16,7 @@ interface TimeProps {
 
 const Time = (props: TimeProps) => {
     return (
-        props.colaboradores.length > 0 && <section className="time" style={{ backgroundColor: hexToRgba(props.cor, '0.6') }}>
+        props.colaboradores.length > 0 ? <section className="time" style={{ backgroundColor: hexToRgba(props.cor, '0.6') }}>
             <input type='color' value={props.cor} onChange={e => { props.mudaCor(props.id, e.target.value) }} className='input-color' />
             <h3 style={{ borderColor: props.cor }}>{props.nome}</h3>
             <div className='colaboradores'>
@@ -36,7 +36,7 @@ const Time = (props: TimeProps) => {
                     )
                 })}
             </div>
-        </section>
+        </section> : <></>
     )
 };
 

@@ -4,11 +4,12 @@ import Campo from '../Campo';
 import ListaSuspensa from '../ListaSuspensa';
 import './Formulario.css';
 import { IColaborador } from '../../compartilhado/interface/IColaboradores';
+import { ITime } from '../../compartilhado/interface/ITime';
 
 interface FormularioProps {
     aoColaboradorcadastrado: (colaborador: IColaborador) => void
     times: string[]
-    novoTime: (valor: object) => void
+    novoTime: (object: ITime) => void
 }
 
 
