@@ -52,7 +52,6 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState<IColaborador[]>([]);
 
-
   useEffect(() => {
     fetch('https://my-json-server.typicode.com/leonardoOluz/Organo_Api/inicial')
       .then(resposta => resposta.json())
