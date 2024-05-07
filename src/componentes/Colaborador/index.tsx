@@ -2,14 +2,14 @@ import './Colaborador.css';
 import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 interface ColaboradorProps {
-    favoritar: boolean
+    favoritar?: boolean
     nome: string
     corDeFundo: string
     cargo: string
     imagem: string
-    aoDeletar: (id: number) => void
-    id: number
-    aoFavoritar: (id: number) => void
+    aoDeletar: (id: number | string | undefined) => void
+    id?: number | string
+    aoFavoritar: (id: number | string | undefined) => void
 }
 
 

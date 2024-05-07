@@ -4,11 +4,11 @@ import './Time.css';
 import { IColaborador } from '../../compartilhado/interface/IColaboradores';
 
 interface TimeProps {
-    id: number
+    id: number | string
     cor: string
-    aoDeletar: (id: number) => void
-    aoFavoritar: (id: number) => void
-    mudaCor: (id: number , cor: string) => void
+    aoDeletar: (id: number | string | undefined) => void
+    aoFavoritar: (id: number | string | undefined) => void
+    mudaCor: (id: number | string , cor: string) => void
     nome: string
     colaboradores: IColaborador[]
 }

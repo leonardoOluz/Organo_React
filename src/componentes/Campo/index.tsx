@@ -3,13 +3,13 @@ import './Campo.css'
 interface CampoProps {
     aoAlterado: (valor: string) => void
     label: string
-    obrigatorio: boolean
+    obrigatorio?: boolean
     placeholder: string
-    type: string
+    type?: string
     valor: string
 }
 
-const Campo = ({ aoAlterado, label, obrigatorio, placeholder, type, valor }: CampoProps) => {
+const Campo = ({ aoAlterado, label, obrigatorio = false, placeholder, type = 'text', valor }: CampoProps) => {
 
     const placeholderModificado = `${placeholder}...`
 

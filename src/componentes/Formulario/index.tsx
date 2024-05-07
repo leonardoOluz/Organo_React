@@ -3,8 +3,16 @@ import Botao from '../Botao';
 import Campo from '../Campo';
 import ListaSuspensa from '../ListaSuspensa';
 import './Formulario.css';
+import { IColaborador } from '../../compartilhado/interface/IColaboradores';
 
-const Formulario = (props) => {
+interface FormularioProps {
+    aoColaboradorcadastrado: (colaborador: IColaborador) => void
+    times: string[]
+    novoTime: (valor: object) => void
+}
+
+
+const Formulario = (props: FormularioProps) => {
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
     const [imagem, setImagem] = useState('');
@@ -12,7 +20,7 @@ const Formulario = (props) => {
     const [nomeTime, setNomeTime] = useState('');
     const [corTime, setCorTime] = useState('');
 
-    const aoSalvar = (evento) => {
+    const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault();
         props.aoColaboradorcadastrado({
             nome,
@@ -29,7 +37,7 @@ const Formulario = (props) => {
     //FSX
     return (
         <section className="formulario">
-            <form onSubmit={aoSalvar}>
+            <form onSubmit={evento => aoSalvar(evento)}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
                 <Campo
                     obrigatorio
@@ -43,14 +51,15 @@ const Formulario = (props) => {
                     label="Cargo"
                     placeholder="Digite seu cargo"
                     valor={cargo}
-                    aoAlterado={valor => setCargo(valor)}                    
+                    aoAlterado={valor => setCargo(valor)}
                 />
                 <Campo
                     label="Imagem"
                     placeholder="Informe o endereço da imagem..."
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)}                    
-                />                <ListaSuspensa
+                    aoAlterado={valor => setImagem(valor)}
+                />
+                <ListaSuspensa
                     obrigatorio
                     label="Time"
                     itens={props.times}

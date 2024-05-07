@@ -1,8 +1,8 @@
 export interface IColaborador {
-    id: number
+    id?: number | string
     nome: string
     cargo: string
     imagem: string
-    favoritar: boolean
+    favoritar?: boolean
     time: string
 }
