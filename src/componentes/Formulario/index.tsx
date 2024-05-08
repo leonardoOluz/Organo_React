@@ -44,6 +44,7 @@ const Formulario = (props: FormularioProps) => {
             <form onSubmit={evento => aoSalvar(evento)}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
                 <Campo
+                    type='text'
                     obrigatorio
                     label="Nome"
                     placeholder="Digite seu nome"
@@ -51,6 +52,7 @@ const Formulario = (props: FormularioProps) => {
                     aoAlterado={valor => setNome(valor)}
                 />
                 <Campo
+                    type='text'
                     obrigatorio
                     label="Cargo"
                     placeholder="Digite seu cargo"
@@ -58,6 +60,7 @@ const Formulario = (props: FormularioProps) => {
                     aoAlterado={valor => setCargo(valor)}
                 />
                 <Campo
+                    type='text'
                     label="Imagem"
                     placeholder="Informe o endereço da imagem..."
                     valor={imagem}
@@ -91,6 +94,7 @@ const Formulario = (props: FormularioProps) => {
                 }}            >
                 <h2>Preencha os dados para criar um novo Time</h2>
                 <Campo
+                    type='text'
                     obrigatorio
                     label="Nome"
                     placeholder="Digite o nome do seu time"
